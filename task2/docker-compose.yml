@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: dostavimvse
+    ports:
+      - 4022:4022
+    volumes:
+      - ./scripts/CREATE.sql:/docker-entrypoint-initdb.d/CREATE.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 15
+
+  app:
+    build: ./DostavimVse
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8080:8080     
