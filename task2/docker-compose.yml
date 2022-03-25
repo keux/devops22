@@ -5,9 +5,9 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_USER: admin
+      MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: dostavimvse
+      MYSQL_DATABASE: dostavim
     ports:
       - 4022:4022
     volumes:
