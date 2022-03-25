@@ -1,0 +1,30 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install packages
+      apt: update_cache=yes name={{ item }} state=latest
+      with_items:
+        - apache2
+        - python3-pip
+        - libapache2-mod-wsgi-py3
+    - name: flask installation via pip
+      pip: name=flask
+- hosts: all
+  become: yes
+  tasks:
+    - name: copy web-pages to var/www/
+      copy:
+        src: "var/www/"
+        dest: "/var/www"
+      notify:
+        - Restart Apache
+    - name: copy virtual host config
+      copy:
+        src: "config/"
+        dest: "/etc/apache2/sites-enabled"
+      notify:
+        - Restart Apache
+  handlers:
+    - name: Restart Apache
+      service: name=apache2 state=restarted
