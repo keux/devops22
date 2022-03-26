@@ -5,5 +5,7 @@ in folder ```project1``` run:
   - ```vagrant ssh```
 
 Pages are available at 
-- :5892/static
-- :5892/dynamic
+- localhost:5892/static
+- localhost:5892/dynamic
+- 192.168.38.52/dynamic
+- 192.168.38.52/static
