@@ -30,7 +30,7 @@ jobs:
       uses: akhtyamovpavel/ActionGtestReport@v0.0.9
       env:
           GOOGLE_TEST_DIR: ${{github.workspace}}/task-ci/3rdparty
-          Task4_SOURCE_DIR: ${{github.workspace}}/taskci
+          Task4_SOURCE_DIR: ${{github.workspace}}/task-ci
       with:
         exec-path:  ${{github.workspace}}/task-ci/bin/CTestExe
         report-path: "../report.xml"
