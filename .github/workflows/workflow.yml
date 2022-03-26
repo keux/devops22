@@ -34,7 +34,7 @@ jobs:
       with:
         exec-path:  ${{github.workspace}}/task-ci/bin/CTestExe
         report-path: "../report.xml"
-        working-directory: ${{gitub.workspace}}/task-ci/bin/
+        working-directory: ${{github.workspace}}/task-ci/bin/
  
     - name: UploadArtifacts step
       uses: actions/upload-artifact@v2
